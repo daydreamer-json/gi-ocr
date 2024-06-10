@@ -1,0 +1,15 @@
+Story | Auto play : {'left': 136, 'top': 44, 'width': 168, 'height': 38}
+Map | Side Menu Warp point title label : {'left': 1991, 'top': 25, 'width': 262, 'height': 43}
+Map | Side Menu Warp point area text : {'left': 1978, 'top': 131, 'width': 552, 'height': 56}
+Map | Area realtime : {'left': 2020, 'top': 1317, 'width': 372, 'height': 42}
+Map | Area realtime progress : {'left': 2206, 'top': 1358, 'width': 183, 'height': 42}
+Party Setup | Title : {'left': 162, 'top': 44, 'width': 164, 'height': 38}
+Normal | Area overlay : {'left': 544, 'top': 260, 'width': 1475, 'height': 68}
+Normal | Party Number pixel 1 : 2480, 344
+Normal | Party Number pixel 1 : 2510, 370
+Normal | Party Number pixel 2 : 2480, 474
+Normal | Party Number pixel 2 : 2510, 498
+Normal | Party Number pixel 3 : 2480, 602
+Normal | Party Number pixel 3 : 2510, 626
+Normal | Party Number pixel 4 : 2480, 730
+Normal | Party Number pixel 4 : 2510, 754

@@ -1,0 +1,26 @@
+{
+  "base": {
+    "appName": "gi-ocr",
+    "appCopyrightShort": "(C) daydreamer-json"
+  },
+  "ocr": {
+    "autoPlayIndicatorLabel": {"left": 136, "top": 44, "width": 168, "height": 38},
+    "mapSideMenuTitleLabel": {"left": 1991, "top": 25, "width": 262, "height": 43},
+    "mapSideMenuAreaLabel": {"left": 1978, "top": 131, "width": 552, "height": 56},
+    "mapRealtimeAreaLabel": {"left": 2020, "top": 1317, "width": 372, "height": 42},
+    "mapRealtimeProgressLabel": {"left": 2206, "top": 1358, "width": 183, "height": 42},
+    "partySetupTitleLabel": {"left": 162, "top": 44, "width": 164, "height": 38},
+    "normalAreaOverlayLabel": {"left": 544, "top": 260, "width": 1475, "height": 68},
+    "normalPartyNumberPixel11": [2480, 344],
+    "normalPartyNumberPixel12": [2510, 370],
+    "normalPartyNumberPixel21": [2480, 474],
+    "normalPartyNumberPixel22": [2510, 498],
+    "normalPartyNumberPixel31": [2480, 602],
+    "normalPartyNumberPixel32": [2510, 626],
+    "normalPartyNumberPixel41": [2480, 730],
+    "normalPartyNumberPixel42": [2510, 754]
+  },
+  "logger": {
+    "logLevel": "trace"
+  }
+}
