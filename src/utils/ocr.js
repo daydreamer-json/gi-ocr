@@ -11,7 +11,7 @@ async function initialize () {
   logger.info('Loading Tesseract engine');
   const worker = await Tesseract.createWorker('jpn', 1, {
     'logger': (msg) => {
-      if (typeof msg === 'object' && msg.status) {logger.debug(msg.status)} else {logger.debug(msg)};
+      if (typeof msg === 'object' && msg.status && 'progress' in msg) {logger.trace(`${msg.status} : ${msg.progress * 100} %`)} else {logger.trace(msg)};
     },
     'errorHandler': (msg) => {logger.error(msg)}
   });
@@ -20,30 +20,62 @@ async function initialize () {
 }
 
 async function testInference (ocrWorker) {
-  const rect = {'left': 136, 'top': 44, 'width': 168, 'height': 38};
   const picturePath = {
-    'cropped': path.resolve('./testImages/autoPlay.png'),
-    'original': path.resolve('./testImages/original.png')
+    'story': path.resolve('./testImages/story.png'),
+    'inventory': path.resolve('./testImages/inventory.png'),
+    'mapSide': path.resolve('./testImages/mapSide.png'),
+    'map': path.resolve('./testImages/map.png'),
+    'party': path.resolve('./testImages/party.png'),
+    'orig1': path.resolve('./testImages/orig1.png'),
+    'orig2': path.resolve('./testImages/orig2.png'),
   }
-  const screenshotBuffer = await screenshotUtils.takeScrShotBuffer();
-  const screenshotCroppedBuffer = await sharp(screenshotBuffer).extract(rect).toFormat('png').toBuffer();
+  // const screenshotBuffer = await screenshotUtils.takeScrShotBuffer();
+  const screenshotBuffer = await sharp(picturePath.inventory).toFormat('png').toBuffer();
 
   const cropBuffer = {
-    'autoPlayIndicatorLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.autoPlayIndicatorLabel).toFormat('png').toBuffer(),
-    'mapSideMenuTitleLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.mapSideMenuTitleLabel).toFormat('png').toBuffer(),
-    'mapSideMenuAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.mapSideMenuAreaLabel).toFormat('png').toBuffer(),
-    'mapRealtimeAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.mapRealtimeAreaLabel).toFormat('png').toBuffer(),
-    'mapRealtimeProgressLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.mapRealtimeProgressLabel).toFormat('png').toBuffer(),
-    'partySetupTitleLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.partySetupTitleLabel).toFormat('png').toBuffer(),
-    'normalAreaOverlayLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.normalAreaOverlayLabel).toFormat('png').toBuffer()
+    'gameMenuLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.gameMenuLabel).toFormat('png').toBuffer(),
+    'mapSideMenuTitleLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapSideMenuTitleLabel).toFormat('png').toBuffer(),
+    'mapSideMenuAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapSideMenuAreaLabel).toFormat('png').toBuffer(),
+    'mapRealtimeAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapRealtimeAreaLabel).toFormat('png').toBuffer(),
+    'mapRealtimeProgressLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapRealtimeProgressLabel).toFormat('png').toBuffer(),
+    'normalAreaOverlayLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.normalAreaOverlayLabel).toFormat('png').toBuffer()
   };
   
+  const inferResultObjRaw = new Object();
+  Object.keys(cropBuffer).forEach((keyName) => {inferResultObjRaw[keyName] = null});
+  const inferResultObj = JSON.parse(JSON.stringify(inferResultObjRaw));
 
-  // const charWhitelist = 'オート再生中';
-  // ocrWorker.setParameters({'tessedit_char_whitelist': charWhitelist, 'user_defined_dpi': ''});
-  const result = await ocrWorker.recognize(screenshotCroppedBuffer);
-  console.log(result.data.text.trim().replaceAll(' ', ''));
-  
+  inferResultObjRaw.gameMenuLabel = await ocrWorker.recognize(cropBuffer.gameMenuLabel);
+  inferResultObj.gameMenuLabel = resultDataToStripText(inferResultObjRaw.gameMenuLabel);
+  if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.gameMenuLabel, 'g'))) {
+    logger.info('State : Story reading');
+  } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.partySetupTitleLabel, 'g'))) {
+    logger.info('State : Party select');
+  } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.gameMenuInventoryLabel, 'g'))) {
+    logger.info('State : Inventory looking');
+  } else {
+    inferResultObjRaw.mapSideMenuTitleLabel = await ocrWorker.recognize(cropBuffer.mapSideMenuTitleLabel);
+    inferResultObj.mapSideMenuTitleLabel = resultDataToStripText(inferResultObjRaw.mapSideMenuTitleLabel);
+    if (inferResultObj.mapSideMenuTitleLabel.match(new RegExp(appConfig.ocr.matchRegExp.mapSideMenuTitleLabel, 'g'))) {
+      inferResultObjRaw.mapSideMenuAreaLabel = await ocrWorker.recognize(cropBuffer.mapSideMenuAreaLabel);
+      inferResultObj.mapSideMenuAreaLabel = resultDataToStripText(inferResultObjRaw.mapSideMenuAreaLabel);
+      logger.info('State : Map teleport select');
+    } else {
+      inferResultObjRaw.mapRealtimeProgressLabel = await ocrWorker.recognize(cropBuffer.mapRealtimeProgressLabel);
+      inferResultObj.mapRealtimeProgressLabel = resultDataToStripText(inferResultObjRaw.mapRealtimeProgressLabel);
+      if (inferResultObj.mapRealtimeProgressLabel.match(new RegExp(appConfig.ocr.matchRegExp.mapRealtimeProgressLabel, 'g'))) {
+        inferResultObjRaw.mapRealtimeAreaLabel = await ocrWorker.recognize(cropBuffer.mapRealtimeAreaLabel);
+        inferResultObj.mapRealtimeAreaLabel = resultDataToStripText(inferResultObjRaw.mapRealtimeAreaLabel);
+        logger.info('State : Map opened');
+      } else {
+        inferResultObjRaw.normalAreaOverlayLabel = await ocrWorker.recognize(cropBuffer.normalAreaOverlayLabel);
+        inferResultObj.normalAreaOverlayLabel = resultDataToStripText(inferResultObjRaw.normalAreaOverlayLabel);
+        logger.info('State : Normal');
+      }
+    }
+  }
+  console.log(inferResultObj);
+  return inferResultObj;
 }
 
 async function stopWorker (worker) {
@@ -51,8 +83,13 @@ async function stopWorker (worker) {
   return null;
 }
 
+function resultDataToStripText (inputData) {
+  return inputData.data.text.trim().replaceAll(' ', '').replaceAll('\n', '');
+}
+
 export default {
   initialize,
   testInference,
-  stopWorker
+  stopWorker,
+  resultDataToStripText
 };
