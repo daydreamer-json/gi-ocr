@@ -1,0 +1,245 @@
+[
+  {
+    "detectText": "武器",
+    "details": "メニュー",
+    "state": "バッグ-武器を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "聖遺物",
+    "details": "メニュー",
+    "state": "バッグ-聖遺物を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "育成アイテム",
+    "details": "メニュー",
+    "state": "バッグ-育成アイテムを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "食べ物",
+    "details": "メニュー",
+    "state": "バッグ-食べ物を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "材料",
+    "details": "メニュー",
+    "state": "バッグ-材料を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "便利アイテム",
+    "details": "メニュー",
+    "state": "バッグ-便利アイテムを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "任務",
+    "details": "メニュー",
+    "state": "バッグ-任務を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "貴重アイテム",
+    "details": "メニュー",
+    "state": "バッグ-貴重アイテムを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "調度品",
+    "details": "メニュー",
+    "state": "バッグ-調度品を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "名刺を変更する",
+    "details": "メニュー",
+    "state": "名刺を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "フレンド",
+    "details": "メニュー",
+    "state": "フレンド画面を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "アチーブメント",
+    "details": "メニュー",
+    "state": "アチーブメントを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "図鑑",
+    "details": "メニュー",
+    "state": "図鑑を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "地理誌",
+    "details": "メニュー",
+    "state": "図鑑-地理誌を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "旅行日誌",
+    "details": "メニュー",
+    "state": "図鑑-旅行日誌を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "書籍",
+    "details": "メニュー",
+    "state": "図鑑-書籍を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "物産誌",
+    "details": "メニュー",
+    "state": "図鑑-物産誌を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "装備図鑑",
+    "details": "メニュー",
+    "state": "装備図鑑を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "生物誌",
+    "details": "メニュー",
+    "state": "図鑑-生物誌を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "チュートリアル",
+    "details": "メニュー",
+    "state": "図鑑-チュートリアルを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "キャラ図鑑",
+    "details": "メニュー",
+    "state": "キャラ図鑑を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "育成ガイド",
+    "details": "メニュー",
+    "state": "育成ガイドを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "進行中|魔神任務|伝説任務|世界任務|依頼任務",
+    "details": "メニュー",
+    "state": "任務一覧を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "祈願",
+    "details": "メニュー",
+    "state": "祈願を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "紀行",
+    "details": "メニュー",
+    "state": "紀行画面を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "マルチプレイ",
+    "details": "メニュー",
+    "state": "マルチプレイ画面を閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  },
+  {
+    "detectText": "メール",
+    "details": "メニュー",
+    "state": "メールを閲覧中",
+    "largeImageKey": "genshin_app_icon",
+    "largeImageText": null,
+    "smallImageKey": null,
+    "smallImageText": null
+  }
+]

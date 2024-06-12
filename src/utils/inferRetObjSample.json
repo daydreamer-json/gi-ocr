@@ -1,0 +1,81 @@
+{
+  "inferResultObj": {
+    "gameMenuLabel": ")談A甫へO/",
+    "mapSideMenuTitleLabel": "詞aてん⑳",
+    "mapSideMenuAreaLabel": null,
+    "mapRealtimeAreaLabel": null,
+    "mapRealtimeProgressLabel": "週E|",
+    "normalAreaOverlayLabel": "フォンテーヌ建・誠地区アクアロ口ド・ダーミナル"
+  },
+  "pixelAnalyzeAllResultObj": {
+    "result": {
+      "normalPartyNumberPixel1": {
+        "resultArray": [
+          {
+            "rgb": [170, 197, 223],
+            "average": 197,
+            "luma": 193
+          },
+          {
+            "rgb": [166, 195, 221],
+            "average": 194,
+            "luma": 191
+          }
+        ],
+        "isNoDifference": false,
+        "isBright": false
+      },
+      "normalPartyNumberPixel2": {
+        "resultArray": [
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          },
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          }
+        ],
+        "isNoDifference": true,
+        "isBright": true
+      },
+      "normalPartyNumberPixel3": {
+        "resultArray": [
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          },
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          }
+        ],
+        "isNoDifference": true,
+        "isBright": true
+      },
+      "normalPartyNumberPixel4": {
+        "resultArray": [
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          },
+          {
+            "rgb": [255, 255, 255],
+            "average": 255,
+            "luma": 255
+          }
+        ],
+        "isNoDifference": true,
+        "isBright": true
+      }
+    },
+    "counterIsNoDifference": 3,
+    "counterIsBright": 3
+  },
+  "stateText": "normal"
+}

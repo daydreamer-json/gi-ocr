@@ -1,0 +1,767 @@
+[
+  {
+    "detectText": "アルベド",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_albedo",
+    "largeImageText": "アルベドを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "アルハイゼン",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_alhatham",
+    "largeImageText": "アルハイゼンを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "アーロイ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_aloy",
+    "largeImageText": "アーロイを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "アンバー",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_ambor",
+    "largeImageText": "アンバーを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "アルレッキーノ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_arlecchino",
+    "largeImageText": "アルレッキーノを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "神里綾華",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_ayaka",
+    "largeImageText": "神里綾華を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "神里綾人",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_ayato",
+    "largeImageText": "神里綾人を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "白朮",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_baizhuer",
+    "largeImageText": "白朮を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "バーバラ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_barbara",
+    "largeImageText": "バーバラを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "北斗",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_beidou",
+    "largeImageText": "北斗を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ベネット",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_bennett",
+    "largeImageText": "ベネットを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "キャンディス",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_candace",
+    "largeImageText": "キャンディスを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "シャルロット",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_charlotte",
+    "largeImageText": "シャルロットを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "シュヴルーズ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_chevreuse",
+    "largeImageText": "シュヴルーズを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "千織",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_chiori",
+    "largeImageText": "千織を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "重雲",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_chongyun",
+    "largeImageText": "重雲を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "クロリンデ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_clorinde",
+    "largeImageText": "クロリンデを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "コレイ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_collei",
+    "largeImageText": "コレイを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "セノ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_cyno",
+    "largeImageText": "セノを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ディシア",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_dehya",
+    "largeImageText": "ディシアを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ディルック",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_diluc",
+    "largeImageText": "ディルックを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ディオナ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_diona",
+    "largeImageText": "ディオナを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ドリー",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_dori",
+    "largeImageText": "ドリーを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "エウルア",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_eula",
+    "largeImageText": "エウルアを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ファルザン",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_faruzan",
+    "largeImageText": "ファルザンを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "煙緋",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_feiyan",
+    "largeImageText": "煙緋を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "フィッシュル",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_fischl",
+    "largeImageText": "フィッシュルを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "フレミネ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_freminet",
+    "largeImageText": "フレミネを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "フリーナ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_furina",
+    "largeImageText": "フリーナを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "嘉明",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_gaming",
+    "largeImageText": "嘉明を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "甘雨",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_ganyu",
+    "largeImageText": "甘雨を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ゴロー",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_gorou",
+    "largeImageText": "ゴローを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "鹿野院平蔵",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_heizo",
+    "largeImageText": "鹿野院平蔵を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "胡桃",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_hutao",
+    "largeImageText": "胡桃を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "荒瀧一斗",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_itto",
+    "largeImageText": "荒瀧一斗を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ガイア",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_kaeya",
+    "largeImageText": "ガイアを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "カーヴェ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_kaveh",
+    "largeImageText": "カーヴェを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "楓原万葉",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_kazuha",
+    "largeImageText": "楓原万葉を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "刻晴",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_keqing",
+    "largeImageText": "刻晴を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "クレー",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_klee",
+    "largeImageText": "クレーを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "珊瑚宮心海",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_kokomi",
+    "largeImageText": "珊瑚宮心海を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "レイラ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_layla",
+    "largeImageText": "レイラを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "リネット",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_linette",
+    "largeImageText": "リネットを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "リネ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_liney",
+    "largeImageText": "リネを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "リサ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_lisa",
+    "largeImageText": "リサを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "閑雲",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_liuyun",
+    "largeImageText": "閑雲を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ミカ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_mika",
+    "largeImageText": "ミカを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "綺良々",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_momoka",
+    "largeImageText": "綺良々を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "モナ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_mona",
+    "largeImageText": "モナを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ナヒーダ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_nahida",
+    "largeImageText": "ナヒーダを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ナヴィア",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_navia",
+    "largeImageText": "ナヴィアを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ヌヴィレット",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_neuvillette",
+    "largeImageText": "ヌヴィレットを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ニィロウ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_nilou",
+    "largeImageText": "ニィロウを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "凝光",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_ningguang",
+    "largeImageText": "凝光を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ノエル",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_noel",
+    "largeImageText": "ノエルを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "旅人",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_playerboy",
+    "largeImageText": "旅人を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "旅人",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_playergirl",
+    "largeImageText": "旅人を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ジン",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_qin",
+    "largeImageText": "ジンを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "七七",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_qiqi",
+    "largeImageText": "七七を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "レザー",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_razor",
+    "largeImageText": "レザーを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ロサリア",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_rosaria",
+    "largeImageText": "ロサリアを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "九条裟羅",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_sara",
+    "largeImageText": "九条裟羅を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "早柚",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_sayu",
+    "largeImageText": "早柚を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "セトス",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_sethos",
+    "largeImageText": "セトスを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "申鶴",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_shenhe",
+    "largeImageText": "申鶴を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "久岐忍",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_shinobu",
+    "largeImageText": "久岐忍を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "雷電将軍",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_shougun",
+    "largeImageText": "雷電将軍を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "シグウィン",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_sigewinne",
+    "largeImageText": "シグウィンを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "スクロース",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_sucrose",
+    "largeImageText": "スクロースを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "タルタリヤ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_tartaglia",
+    "largeImageText": "タルタリヤを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ティナリ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_tighnari",
+    "largeImageText": "ティナリを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "トーマ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_tohma",
+    "largeImageText": "トーマを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ウェンティ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_venti",
+    "largeImageText": "ウェンティを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "放浪者",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_wanderer",
+    "largeImageText": "放浪者を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "リオセスリ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_wriothesley",
+    "largeImageText": "リオセスリを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "香菱",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_xiangling",
+    "largeImageText": "香菱を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "?",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_xiao",
+    "largeImageText": "?を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "行秋",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_xingqiu",
+    "largeImageText": "行秋を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "辛炎",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_xinyan",
+    "largeImageText": "辛炎を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "八重神子",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_yae",
+    "largeImageText": "八重神子を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "ヨォーヨ",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_yaoyao",
+    "largeImageText": "ヨォーヨを使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "夜蘭",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_yelan",
+    "largeImageText": "夜蘭を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "宵宮",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_yoimiya",
+    "largeImageText": "宵宮を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "雲菫",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_yunjin",
+    "largeImageText": "雲菫を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  },
+  {
+    "detectText": "鍾離",
+    "details": false,
+    "state": false,
+    "largeImageKey": "ui_avataricon_zhongli",
+    "largeImageText": "鍾離を使用中",
+    "smallImageKey": false,
+    "smallImageText": false
+  }
+]

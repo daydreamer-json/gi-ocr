@@ -7,6 +7,13 @@ import logger from './logger.js';
 import appConfig from './config.js';
 import stringUtils from './stringUtils.js';
 
+const ocrResultState = {
+  'gameMenu': 'gameMenu',
+  'mapSide': 'mapSide',
+  'map': 'map',
+  'normal': 'normal'
+}
+
 async function initialize () {
   logger.info('Loading Tesseract engine');
   const worker = await Tesseract.createWorker('jpn', 1, {
@@ -30,29 +37,57 @@ async function testInference (ocrWorker) {
     'orig2': path.resolve('./testImages/orig2.png'),
   }
   // const screenshotBuffer = await screenshotUtils.takeScrShotBuffer();
-  const screenshotBuffer = await sharp(picturePath.inventory).toFormat('png').toBuffer();
+  const screenshotBuffer = await sharp(picturePath.orig1).toFormat('png').toBuffer();
 
-  const cropBuffer = {
-    'gameMenuLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.gameMenuLabel).toFormat('png').toBuffer(),
-    'mapSideMenuTitleLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapSideMenuTitleLabel).toFormat('png').toBuffer(),
-    'mapSideMenuAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapSideMenuAreaLabel).toFormat('png').toBuffer(),
-    'mapRealtimeAreaLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapRealtimeAreaLabel).toFormat('png').toBuffer(),
-    'mapRealtimeProgressLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.mapRealtimeProgressLabel).toFormat('png').toBuffer(),
-    'normalAreaOverlayLabel': await sharp(screenshotBuffer).extract(appConfig.ocr.cropArea.normalAreaOverlayLabel).toFormat('png').toBuffer()
-  };
+
+  const cropBufferKeyList = [
+    'gameMenuLabel',
+    'mapSideMenuTitleLabel',
+    'mapSideMenuAreaLabel',
+    'mapRealtimeAreaLabel',
+    'mapRealtimeProgressLabel',
+    'normalAreaOverlayLabel'
+  ]
+
+  const cropBufferFunc = async (screenshotBuffer, cropBufferKeyList) => {
+    const extractPromises = cropBufferKeyList.map(key => {
+      return sharp(screenshotBuffer)
+        .extract(appConfig.ocr.cropArea[key])
+        .toFormat('png')
+        .toBuffer();
+    });
   
+    try {
+      const buffers = await Promise.all(extractPromises);
+      const result = {};
+      cropBufferKeyList.forEach((key, index) => {
+        result[key] = buffers[index];
+      });
+      return result;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  };
+  const cropBuffer = await cropBufferFunc(screenshotBuffer, cropBufferKeyList)
   const inferResultObjRaw = new Object();
   Object.keys(cropBuffer).forEach((keyName) => {inferResultObjRaw[keyName] = null});
   const inferResultObj = JSON.parse(JSON.stringify(inferResultObjRaw));
+  
+  let stateText = null;
+  let pixelAnalyzeResult = null;
 
   inferResultObjRaw.gameMenuLabel = await ocrWorker.recognize(cropBuffer.gameMenuLabel);
   inferResultObj.gameMenuLabel = resultDataToStripText(inferResultObjRaw.gameMenuLabel);
-  if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.gameMenuLabel, 'g'))) {
+  if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.autoPlayIndicatorLabel, 'g'))) {
     logger.info('State : Story reading');
+    stateText = ocrResultState.gameMenu;
   } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.partySetupTitleLabel, 'g'))) {
     logger.info('State : Party select');
+    stateText = ocrResultState.gameMenu;
   } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.gameMenuInventoryLabel, 'g'))) {
     logger.info('State : Inventory looking');
+    stateText = ocrResultState.gameMenu;
   } else {
     inferResultObjRaw.mapSideMenuTitleLabel = await ocrWorker.recognize(cropBuffer.mapSideMenuTitleLabel);
     inferResultObj.mapSideMenuTitleLabel = resultDataToStripText(inferResultObjRaw.mapSideMenuTitleLabel);
@@ -60,27 +95,56 @@ async function testInference (ocrWorker) {
       inferResultObjRaw.mapSideMenuAreaLabel = await ocrWorker.recognize(cropBuffer.mapSideMenuAreaLabel);
       inferResultObj.mapSideMenuAreaLabel = resultDataToStripText(inferResultObjRaw.mapSideMenuAreaLabel);
       logger.info('State : Map teleport select');
+      stateText = ocrResultState.mapSide;
     } else {
       inferResultObjRaw.mapRealtimeProgressLabel = await ocrWorker.recognize(cropBuffer.mapRealtimeProgressLabel);
       inferResultObj.mapRealtimeProgressLabel = resultDataToStripText(inferResultObjRaw.mapRealtimeProgressLabel);
       if (inferResultObj.mapRealtimeProgressLabel.match(new RegExp(appConfig.ocr.matchRegExp.mapRealtimeProgressLabel, 'g'))) {
         inferResultObjRaw.mapRealtimeAreaLabel = await ocrWorker.recognize(cropBuffer.mapRealtimeAreaLabel);
-        inferResultObj.mapRealtimeAreaLabel = resultDataToStripText(inferResultObjRaw.mapRealtimeAreaLabel);
+        inferResultObj.mapRealtimeAreaLabel = resultDataToStripText(inerResultObjRaw.mapRealtimeAreaLabel);
         logger.info('State : Map opened');
+        stateText = ocrResultState['map'];
       } else {
         inferResultObjRaw.normalAreaOverlayLabel = await ocrWorker.recognize(cropBuffer.normalAreaOverlayLabel);
         inferResultObj.normalAreaOverlayLabel = resultDataToStripText(inferResultObjRaw.normalAreaOverlayLabel);
         logger.info('State : Normal');
+        stateText = ocrResultState.normal;
+
       }
     }
   }
-  console.log(inferResultObj);
-  return inferResultObj;
+  const pixelAnalyzeAllResultObj = await pixelAnalyzeAll(screenshotBuffer);
+  const retObj = {inferResultObj, pixelAnalyzeAllResultObj, stateText};
+  // console.log(JSON.stringify(retObj, '', '  '));
+  return retObj;
 }
 
-async function stopWorker (worker) {
-  await worker.terminate();
-  return null;
+async function pixelColorGetter (buffer, x, y) {
+  const colorCode = (await sharp(buffer).extract({'left': x, 'top': y, 'width': 1, 'height': 1}).removeAlpha().raw().toBuffer()).toString('hex');
+  const rgbArray = colorCode.match(/.{2}/g).map(hex => parseInt(hex, 16))
+  return {
+    'rgb': rgbArray,
+    'average': Math.round(rgbArray.reduce((acc, f) => acc + f, 0) / 3),
+    'luma': Math.round((0.2126 * (rgbArray[0] / 255) + 0.7152 * (rgbArray[1] / 255) + 0.0722 * (rgbArray[2] / 255)) * 255)
+  }
+}
+
+async function pixelAnalyzeAll(buffer) {
+  logger.trace('Pixel analyzing started');
+  const threshold = appConfig.ocr.lumaThreshold;
+  const result = {};
+  let counterIsNoDifference = 0;
+  let counterIsBright = 0;
+  for (const [key, coords] of Object.entries(appConfig.ocr.pixelExtractArea)) {
+    const resultArray = await Promise.all(coords.map(([x, y]) => pixelColorGetter(buffer, x, y)));
+    const isNoDifference = resultArray.every((color, _, arr) => JSON.stringify(color) === JSON.stringify(arr[0]));
+    const isBright = resultArray.some(({ luma }) => luma >= threshold);
+    result[key] = { resultArray, isNoDifference, isBright };
+    counterIsNoDifference += isNoDifference ? 1 : 0;
+    counterIsBright += isBright ? 1 : 0;
+  }
+  logger.trace('Pixel analyzing completed');
+  return { result, counterIsNoDifference, counterIsBright };
 }
 
 function resultDataToStripText (inputData) {
@@ -90,6 +154,5 @@ function resultDataToStripText (inputData) {
 export default {
   initialize,
   testInference,
-  stopWorker,
   resultDataToStripText
 };
