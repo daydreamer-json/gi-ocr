@@ -5,6 +5,7 @@ import sharp from 'sharp';
 import screenshotUtils from './screenshot.js';
 import logger from './logger.js';
 import appConfig from './config.js';
+import tableConfig from './tableConfig.js';
 import stringUtils from './stringUtils.js';
 
 const ocrResultState = {
@@ -12,7 +13,7 @@ const ocrResultState = {
   'mapSide': 'mapSide',
   'map': 'map',
   'normal': 'normal'
-}
+};
 
 async function initialize () {
   logger.info('Loading Tesseract engine');
@@ -36,8 +37,8 @@ async function testInference (ocrWorker) {
     'orig1': path.resolve('./testImages/orig1.png'),
     'orig2': path.resolve('./testImages/orig2.png'),
   }
-  // const screenshotBuffer = await screenshotUtils.takeScrShotBuffer();
-  const screenshotBuffer = await sharp(picturePath.orig1).toFormat('png').toBuffer();
+  const screenshotBuffer = await screenshotUtils.takeScrShotBuffer();
+  // const screenshotBuffer = await sharp(picturePath.story).toFormat('png').toBuffer();
 
 
   const cropBufferKeyList = [
@@ -46,7 +47,11 @@ async function testInference (ocrWorker) {
     'mapSideMenuAreaLabel',
     'mapRealtimeAreaLabel',
     'mapRealtimeProgressLabel',
-    'normalAreaOverlayLabel'
+    'normalAreaOverlayLabel',
+    'normalPartyMemberLabel1',
+    'normalPartyMemberLabel2',
+    'normalPartyMemberLabel3',
+    'normalPartyMemberLabel4'
   ]
 
   const cropBufferFunc = async (screenshotBuffer, cropBufferKeyList) => {
@@ -56,7 +61,6 @@ async function testInference (ocrWorker) {
         .toFormat('png')
         .toBuffer();
     });
-  
     try {
       const buffers = await Promise.all(extractPromises);
       const result = {};
@@ -75,18 +79,13 @@ async function testInference (ocrWorker) {
   const inferResultObj = JSON.parse(JSON.stringify(inferResultObjRaw));
   
   let stateText = null;
-  let pixelAnalyzeResult = null;
+  let pixelAnalyzeAllResultObj = null;
+  let isCharaDetected = false;
 
   inferResultObjRaw.gameMenuLabel = await ocrWorker.recognize(cropBuffer.gameMenuLabel);
   inferResultObj.gameMenuLabel = resultDataToStripText(inferResultObjRaw.gameMenuLabel);
-  if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.autoPlayIndicatorLabel, 'g'))) {
-    logger.info('State : Story reading');
-    stateText = ocrResultState.gameMenu;
-  } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.partySetupTitleLabel, 'g'))) {
-    logger.info('State : Party select');
-    stateText = ocrResultState.gameMenu;
-  } else if (inferResultObj.gameMenuLabel.match(new RegExp(appConfig.ocr.matchRegExp.gameMenuInventoryLabel, 'g'))) {
-    logger.info('State : Inventory looking');
+  if (inferResultObj.gameMenuLabel.match(new RegExp(`(${appConfig.ocr.matchRegExp.autoPlayIndicatorLabel}|${appConfig.ocr.matchRegExp.partySetupTitleLabel}|${tableConfig.gameMenu.map(obj => obj.detectText).join('|')})`, 'g'))) {
+    logger.info('State : Game menu');
     stateText = ocrResultState.gameMenu;
   } else {
     inferResultObjRaw.mapSideMenuTitleLabel = await ocrWorker.recognize(cropBuffer.mapSideMenuTitleLabel);
@@ -101,7 +100,7 @@ async function testInference (ocrWorker) {
       inferResultObj.mapRealtimeProgressLabel = resultDataToStripText(inferResultObjRaw.mapRealtimeProgressLabel);
       if (inferResultObj.mapRealtimeProgressLabel.match(new RegExp(appConfig.ocr.matchRegExp.mapRealtimeProgressLabel, 'g'))) {
         inferResultObjRaw.mapRealtimeAreaLabel = await ocrWorker.recognize(cropBuffer.mapRealtimeAreaLabel);
-        inferResultObj.mapRealtimeAreaLabel = resultDataToStripText(inerResultObjRaw.mapRealtimeAreaLabel);
+        inferResultObj.mapRealtimeAreaLabel = resultDataToStripText(inferResultObj.mapRealtimeAreaLabel);
         logger.info('State : Map opened');
         stateText = ocrResultState['map'];
       } else {
@@ -109,12 +108,23 @@ async function testInference (ocrWorker) {
         inferResultObj.normalAreaOverlayLabel = resultDataToStripText(inferResultObjRaw.normalAreaOverlayLabel);
         logger.info('State : Normal');
         stateText = ocrResultState.normal;
-
+        pixelAnalyzeAllResultObj = await pixelAnalyzeAll(screenshotBuffer);
+        const pixelAnalyzeAllResultArray = new Array();
+        Object.keys(pixelAnalyzeAllResultObj.result).forEach(keyName => {
+          pixelAnalyzeAllResultArray.push({keyName, ...pixelAnalyzeAllResultObj.result[keyName]});
+        })
+        if (pixelAnalyzeAllResultObj.counterIsBright === 3 || pixelAnalyzeAllResultObj.counterIsNoDifference === 3) {
+          const pixelAnalyzeNonBrightObj = pixelAnalyzeAllResultArray.find((itm) => itm.isBright === false);
+          const inferKeyNameTemp = pixelAnalyzeNonBrightObj.keyName.replace('NumberPixel', 'MemberLabel');
+          inferResultObjRaw[inferKeyNameTemp] = await ocrWorker.recognize(cropBuffer[inferKeyNameTemp]);
+          inferResultObj[inferKeyNameTemp] = resultDataToStripText(inferResultObjRaw[inferKeyNameTemp]);
+          inferResultObj.normalPartyMemberLabel = inferResultObj[inferKeyNameTemp];
+          isCharaDetected = true;
+        }
       }
     }
   }
-  const pixelAnalyzeAllResultObj = await pixelAnalyzeAll(screenshotBuffer);
-  const retObj = {inferResultObj, pixelAnalyzeAllResultObj, stateText};
+  const retObj = {inferResultObj, pixelAnalyzeAllResultObj, stateText, isCharaDetected};
   // console.log(JSON.stringify(retObj, '', '  '));
   return retObj;
 }
@@ -152,6 +162,7 @@ function resultDataToStripText (inputData) {
 }
 
 export default {
+  ocrResultState,
   initialize,
   testInference,
   resultDataToStripText

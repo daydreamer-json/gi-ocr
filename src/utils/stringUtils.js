@@ -13,13 +13,7 @@ function levenshteinDistance (str1, str2) {
   for (let i = 0; i <= len1; i++) {
     dp[i] = [];
     for (let j = 0; j <= len2; j++) {
-      if (i === 0) {
-        dp[i][j] = j;
-      } else if (j === 0) {
-        dp[i][j] = i;
-      } else {
-        dp[i][j] = 0;
-      }
+      if (i === 0) {dp[i][j] = j} else if (j === 0) {dp[i][j] = i} else {dp[i][j] = 0}
     }
   }
   for (let i = 1; i <= len1; i++) {

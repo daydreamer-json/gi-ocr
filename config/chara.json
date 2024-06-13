@@ -684,11 +684,11 @@
     "smallImageText": false
   },
   {
-    "detectText": "?",
+    "detectText": "魈",
     "details": false,
     "state": false,
     "largeImageKey": "ui_avataricon_xiao",
-    "largeImageText": "?を使用中",
+    "largeImageText": "魈を使用中",
     "smallImageKey": false,
     "smallImageText": false
   },

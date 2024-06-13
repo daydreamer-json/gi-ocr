@@ -54,9 +54,10 @@ class RPCStatus {
   }
   async setStatus (statusObj = {details, state, largeImageKey, largeImageText, smallImageKey, smallImageText}) {
     const tempObj = statusObj;
-    Object.keys(statusObj).forEach(keyName => {
+    // アロー関数によってthisのバインディングを制御
+    const updateKey = (keyName) => {
       if (statusObj[keyName] === false) {
-        tempObj[keyName] === this[keyName];
+        tempObj[keyName] = this[keyName];
       }
       if (statusObj[keyName] === null) {
         delete tempObj[keyName];
@@ -64,9 +65,22 @@ class RPCStatus {
       } else {
         this[keyName] = tempObj[keyName]
       }
-    });
+    };
+  
+    Object.keys(statusObj).forEach(updateKey);
     tempObj.startTimestamp = this.startTimestamp;
+    console.log(tempObj);
     await this.rpcClient.setActivity(tempObj);
+  }
+  getNeedStatusInternal () {
+    return {
+      'details': this.details,
+      'state': this.state,
+      'largeImageKey': this.largeImageKey,
+      'largeImageText': this.largeImageText,
+      'smallImageKey': this.smallImageKey,
+      'smallImageText': this.smallImageText,
+    }
   }
 }
 
